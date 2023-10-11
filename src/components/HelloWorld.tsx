@@ -1,5 +1,5 @@
 import React from "react";
-import { Block, Button } from "vcc-ui";
+import { Flex, Spacer, Text } from "vcc-ui";
 import { useCars } from "../hooks/useCars";
 import { CarCard } from "./carCard";
 
@@ -8,8 +8,21 @@ export const HelloWorld: React.FC = () => {
 
   const { cars } = useCars();
   console.log(cars);
-
-  return <Block extend={{padding: 20}}>
+  <Text>Volvo Cars</Text>
+  return(
+ <div className="homeWrapper">
+  <Text extend={{textAlign:"center",marginBottom:"30px"}} variant={"cook"}>Volvo Cars</Text>
+  <Flex extend={{
+    flexDirection:"row",
+    overflow :'hidden',
+    justifyContent:"flex-start",
+    minWidth: "250px",
+    gap:"24px",
+    height: "100%"
+  }}>
     {cars.map((car) =>{return(<CarCard key={car.id} car={car}/>)})}
-  </Block>;
+  </Flex>)
+  </div>) 
+  
 };
+
