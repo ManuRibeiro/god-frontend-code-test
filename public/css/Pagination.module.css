@@ -1,0 +1,12 @@
+.btnWrapper{
+
+}
+.cardWrapper{
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    justify-content: flex-start;
+    min-width: 250px;
+    gap: 24px;
+    height: 100%;
+}
