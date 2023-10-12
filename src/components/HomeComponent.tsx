@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Flex, Spacer, Text } from "vcc-ui";
 import { useCars } from "../hooks/useCars";
 import { CarCard } from "./CarCard";
 import PaginationDesktop from "./PaginationDesktop";
 import style from "../../public/css/Pagination.module.css"
+import PaginationMobile from "./PaginationMobile";
 
 
 export const HomeComponent: React.FC = () => {
 
   const { cars } = useCars();
+  const [selected, setSelected] = useState(0);
+
+  const onClickMobile = (index: number) =>{
+    let cardList = document.getElementById("card-list");
+    let card = cardList?.firstElementChild;
+    let cardSize = (card?.clientWidth?? 0)+24;
+    let scrollSize = cardList?.scrollWidth ?? 0;
+    let scrollPosition= cardList?.scrollLeft ?? 0;
+
+    cardList?.scrollTo({left:cardSize*index})
+    setSelected(index);
+  }
 
   const onClickLeft = () =>{
     let cardList = document.getElementById("card-list");
@@ -41,7 +54,8 @@ export const HomeComponent: React.FC = () => {
   <div id="card-list" className={style.cardWrapper}>
         {cars.map((car) =>{return(<CarCard key={car.id} car={car}/>)})}
   </div>
-  <PaginationDesktop onClickLeft={onClickLeft} onClickRight={onClickRight}></PaginationDesktop>
+    <PaginationDesktop onClickLeft={onClickLeft} onClickRight={onClickRight}></PaginationDesktop>
+    <PaginationMobile selected={selected} onClick={onClickMobile} total={cars.length}></PaginationMobile>
   </div>) 
   
 };
