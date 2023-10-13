@@ -1,7 +1,7 @@
 import { NextApiRequest,NextApiResponse } from "next";
 import data from '../../public/api/cars.json';
 
-export async function GET(req:NextApiRequest,res:NextApiResponse){
+export default async function cars(req:NextApiRequest,res:NextApiResponse){
     
     res.setHeader('Access-Control-Allow-Origin','*')
     res.setHeader('Access-Control-Allow-Credentials','true')
