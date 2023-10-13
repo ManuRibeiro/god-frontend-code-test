@@ -1,7 +1,6 @@
 import { NextApiRequest,NextApiResponse } from "next";
 import data from '../../public/api/cars.json';
 
-/*
 export async function GET(req:NextApiRequest,res:NextApiResponse){
     
     res.setHeader('Access-Control-Allow-Origin','*')
@@ -11,7 +10,8 @@ export async function GET(req:NextApiRequest,res:NextApiResponse){
     res.status(200).json(data)
     
 }
-*/
+
+/*
 const allowCors = (fn:any) => async (req:NextApiRequest, res:NextApiResponse) => {
     res.setHeader('Access-Control-Allow-Credentials', 'true')
     res.setHeader('Access-Control-Allow-Origin', '*')
@@ -34,3 +34,4 @@ const allowCors = (fn:any) => async (req:NextApiRequest, res:NextApiResponse) =>
   }
   
   module.exports = allowCors(handler)
+  */
